@@ -4,15 +4,28 @@ import lib.Texteria;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
-import pro.delfik.lmao.core.connection.database.ServerIO;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import pro.delfik.lmao.core.connection.PacketEvent;
+import pro.delfik.net.Packet;
+import pro.delfik.net.packet.PacketTop;
 
-public class Top {
+public class Top implements Listener{
 	
 	public static Texteria.Text numbers = null;
 	public static Texteria.Text names = null;
 	public static Texteria.Text wins = null;
 	public static Texteria.Text games = null;
-	
+
+	@EventHandler
+	public void event(PacketEvent event){
+		Packet packet = event.getPacket();
+		if(packet instanceof PacketTop){
+			PacketTop.Top top[] = ((PacketTop) packet).getTop();
+			//TODO
+		}
+	}
+	/*
 	public static void update(boolean b) {
 		World w = Bukkit.getWorlds().get(0);
 		String s = ServerIO.connect("gettop sf");
@@ -57,4 +70,5 @@ public class Top {
 	
 	
 	public static void update() {update(false);}
+	*/
 }

@@ -17,6 +17,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import pro.delfik.lmao.core.Registrar;
+import pro.delfik.lmao.core.connection.Connect;
 import pro.delfik.mlg.command.CommandCapitulate;
 import pro.delfik.mlg.command.CommandMLG;
 import pro.delfik.mlg.command.CommandSF;
@@ -26,6 +27,8 @@ import pro.delfik.mlg.interact.Render;
 import pro.delfik.mlg.interact.Top;
 import pro.delfik.mlg.side.BlueSide;
 import pro.delfik.mlg.side.RedSide;
+import pro.delfik.net.packet.PacketTop;
+import pro.delfik.net.packet.PacketUpdateTop;
 
 import java.io.File;
 import java.util.List;
@@ -78,7 +81,7 @@ public class MLGRush extends JavaPlugin {
 		if (w != null) {
 			initDefaults();
 		}
-		Bukkit.getScheduler().scheduleSyncDelayedTask(this, Top::update, 50L);
+		Connect.send(new PacketUpdateTop("Nemo", false, 0, 100));
 		fallY = 29;
 	}
 	

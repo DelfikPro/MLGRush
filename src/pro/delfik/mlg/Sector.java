@@ -13,12 +13,14 @@ import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 import pro.delfik.lmao.command.handle.PersonNotFoundException;
 import pro.delfik.lmao.core.Person;
+import pro.delfik.lmao.core.connection.Connect;
 import pro.delfik.mlg.side.RedSide;
 import pro.delfik.mlg.side.Side;
 import pro.delfik.mlg.interact.Top;
 import pro.delfik.mlg.side.BlueSide;
 import pro.delfik.lmao.util.Cooldown;
 import pro.delfik.lmao.util.U;
+import pro.delfik.net.packet.PacketUpdateTop;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -176,7 +178,6 @@ public class Sector {
 				});
 				addDust(p.getName(), 30);
 			}
-			Top.update();
 			return;
 		}
 		addDust(winner.getPlayer().getName(), 50);
@@ -199,26 +200,10 @@ public class Sector {
 				MLGRush.equip(p.getHandle());
 			});
 		}
-		Top.update();
 	}
-	
-	
+
 	private void updateStats(Side s, boolean winner) {
-		String[] list = ServerIO.connect("readReal players/" + s.getPlayer().getName() + "/sf").split("\n");
-		int games, wins, beds, deaths;
-		if (list == null) {
-			games = 1;
-			wins = winner ? 1 : 0;
-			beds = s.beds;
-			deaths = s.deaths;
-		} else {
-			games = get(list, 0) + 1;
-			wins = get(list,1) + (winner ? 1 : 0);
-			beds = get(list, 2) + s.beds;
-			deaths = get(list, 3) + s.deaths;
-		}
-		ServerIO.connect("writeReal players/" + s.getPlayer().getName() + "/sf " + games + " " + wins + " " + beds + " " + deaths);
-		ServerIO.connect("top " + s.getPlayer().getName());
+		Connect.send(new PacketUpdateTop(s.getPlayer().getName(), winner, s.beds, s.deaths));
 	}
 	
 	private int get(String[] array, int element) {
