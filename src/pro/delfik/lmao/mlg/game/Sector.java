@@ -13,7 +13,6 @@ import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 import pro.delfik.lmao.command.handle.PersonNotFoundException;
 import pro.delfik.lmao.core.Person;
-import pro.delfik.lmao.core.connection.database.ServerIO;
 import pro.delfik.lmao.mlg.game.side.RedSide;
 import pro.delfik.lmao.mlg.game.side.Side;
 import pro.delfik.lmao.mlg.game.interact.Top;
