@@ -1,8 +1,8 @@
-package pro.delfik.lmao.mlg.game.side;
+package pro.delfik.mlg.side;
 
 import org.bukkit.Location;
 import pro.delfik.lmao.core.Person;
-import pro.delfik.lmao.mlg.game.Sector;
+import pro.delfik.mlg.Sector;
 
 public class RedSide extends Side {
 	public static Location defaultLoc;

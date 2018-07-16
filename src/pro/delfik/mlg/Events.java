@@ -1,7 +1,6 @@
-package pro.delfik.lmao.mlg.game;
+package pro.delfik.mlg;
 
 import lib.I;
-import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -23,9 +22,8 @@ import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.scoreboard.DisplaySlot;
 import pro.delfik.lmao.core.Person;
 import pro.delfik.lmao.core.connection.Connect;
-import pro.delfik.lmao.mlg.game.interact.Queue;
-import pro.delfik.lmao.mlg.game.side.Side;
-import pro.delfik.lmao.util.U;
+import pro.delfik.mlg.interact.Queue;
+import pro.delfik.mlg.side.Side;
 import pro.delfik.net.packet.PacketSummon;
 
 import java.util.HashMap;

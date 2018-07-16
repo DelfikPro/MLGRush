@@ -1,13 +1,13 @@
-package pro.delfik.lmao.mlg.command;
+package pro.delfik.mlg.command;
 
 import pro.delfik.lmao.command.handle.CustomException;
 import pro.delfik.lmao.command.handle.LmaoCommand;
 import pro.delfik.lmao.command.handle.NotEnoughArgumentsException;
 import org.bukkit.command.CommandSender;
 import pro.delfik.lmao.core.Person;
-import pro.delfik.lmao.mlg.game.Sector;
-import pro.delfik.lmao.mlg.game.interact.Render;
-import pro.delfik.lmao.mlg.game.interact.Top;
+import pro.delfik.mlg.Sector;
+import pro.delfik.mlg.interact.Render;
+import pro.delfik.mlg.interact.Top;
 import pro.delfik.lmao.util.U;
 import pro.delfik.util.Rank;
 

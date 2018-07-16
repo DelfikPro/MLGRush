@@ -1,7 +1,7 @@
 name: MLGRush
 version: 1.0
 author: DelfikPro
-main: pro.delfik.lmao.mlg.game.MLGRush
+main: pro.delfik.mlg.MLGRush
 softdepend: [LMAONetwork, ImplarioLib]
 commands:
   mlgrush:
