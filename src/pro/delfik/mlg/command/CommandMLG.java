@@ -1,30 +1,34 @@
-package pro.delfik.lmao.mlg.command;
+package pro.delfik.mlg.command;
 
-import pro.delfik.lmao.permissions.Rank;
+import pro.delfik.lmao.command.handle.CustomException;
+import pro.delfik.lmao.command.handle.LmaoCommand;
+import pro.delfik.lmao.command.handle.NotEnoughArgumentsException;
 import org.bukkit.command.CommandSender;
-import pro.delfik.lmao.command.handle.Command;
-import pro.delfik.lmao.command.handle.ImplarioCommand;
 import pro.delfik.lmao.core.Person;
-import pro.delfik.lmao.mlg.game.Sector;
-import pro.delfik.lmao.mlg.game.interact.Render;
-import pro.delfik.lmao.mlg.game.interact.Top;
+import pro.delfik.mlg.Sector;
+import pro.delfik.mlg.interact.Render;
+import pro.delfik.mlg.interact.Top;
 import pro.delfik.lmao.util.U;
+import pro.delfik.util.Rank;
 
-public class CommandMLG extends ImplarioCommand {
-	@Command(name = "mlgrush", description = "Управление MLGRush", usage = "mlgrush [...]", rankRequired = Rank.DEV, argsRequired = 1)
-	public boolean onCommand(CommandSender sender, String s, String[] args) {
+public class CommandMLG extends LmaoCommand {
+	public CommandMLG(){
+		super("mlgrush", Rank.DEV, "Управление MLGRush");
+	}
+
+	@Override
+	protected void run(CommandSender sender, String command, String[] args) {
+		if(args.length == 0)throw new NotEnoughArgumentsException("");//TODO
 		String prefix = "§8[§dMLG§8] §a";
 		try {
 			switch (args[0].toLowerCase()) {
-				case "top": {
+				case "top":
 					Top.update(true);
 					sender.sendMessage(prefix + "Топ обновлён.");
-					return true;
-				}
-				case "inv": {
+					return;
+				case "inv":
 					Person.get(sender).getHandle().openInventory(Render.generate());
-					return true;
-				}
+					return;
 				case "sector": {
 					try {
 						int sector = Integer.parseInt(args[1]);
@@ -33,85 +37,58 @@ public class CommandMLG extends ImplarioCommand {
 						Person self = Person.get(sender);
 						new Sector(self, p, sector);
 						sender.sendMessage(prefix + "Игра начата.");
-						return true;
+						return;
 					} catch (NumberFormatException e) {
 						sender.sendMessage(prefix + "§e" + args[1] + "§c - не число.");
-						return false;
+						return;
 					} catch (ArrayIndexOutOfBoundsException e) {
 						sender.sendMessage(prefix + "§cИспользование: §e/mlg sector [Номер сектора] [Игрок]");
-						return false;
+						return;
 					}
 				}
 				case "win": {
 					Sector sec = Sector.byname.get(sender.getName());
-					if (sec == null) {
-						sender.sendMessage(prefix + "§cВы не в игре.");
-						return false;
-					}
+					if (sec == null) throw new CustomException(prefix + "§cВы не в игре.");
 					sender.sendMessage(prefix + "Принудительная победа...");
 					sec.end(sec.getSide(sender.getName()));
-					return true;
+					return;
 				}
 				case "lose": {
 					Sector sec = Sector.byname.get(sender.getName());
 					if (sec == null) {
 						sender.sendMessage(prefix + "§cВы не в игре.");
-						return false;
+						return;
 					}
 					sender.sendMessage(prefix + "Принудительное поражение...");
 					sec.end(sec.opposite(sec.getSide(sender.getName())));
-					return true;
+					return;
 				}
 				case "break": {
 					Sector sec = Sector.byname.get(sender.getName());
 					if (sec == null) {
 						sender.sendMessage(prefix + "§cВы не в игре.");
-						return false;
+						return;
 					}
 					sender.sendMessage(prefix + "Ломаем кровать...");
 					sec.breakBed(sender.getName(), sec.opposite(sec.getSide(sender.getName())));
-					return true;
+					return;
 				}
 				case "clear": {
 					Sector sec = Sector.byname.get(sender.getName());
 					if (sec == null) {
 						sender.sendMessage(prefix + "§cВы не в игре.");
-						return false;
+						return;
 					}
 					sender.sendMessage(prefix + "Очистка территории...");
 					sec.clearArea();
-					return true;
+					return;
 				}
-				case "disallow": {
-					sender.sendMessage(prefix + "Входы запрещены.");
-					return true;
-				}
-				default: {
-					sender.sendMessage(prefix + "§6Подкоманда не найдена.");
-					return true;
-				}
+				case "disallow": throw new CustomException(prefix + "Входы запрещены.");
+				default: throw new CustomException(prefix + "§6Подкоманда не найдена.");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			sender.sendMessage(prefix + "§cПроизошла ошибка. Чекай консоль. §e" + e.getClass().getSimpleName());
-			return false;
 		}
-
-
-
-//		Person initiator = Person.get(sender);
-//		if (args.length == 0) {
-//			initiator.getHandle().openInventory(Render.generate());
-//			return true;
-//		}
-//		Person victim = Person.get(args[0]);
-//		if (victim == null) {
-//			sender.sendMessage("§8[§dMLG§8] §cИгрок §e" + args[0] + "§c не найден.");
-//			return false;
-//		}
-//		sender.sendMessage("§8[§dMLG§8] §aЗапрос на дуэль отправлен.");
-//		victim.sendTitle("§f");
-//		victim.sendSubtitle("§aИгрок §e" + initiator.getDisplayName() + "§a вызывает вас на дуэль.");
-//		return true;
 	}
 }

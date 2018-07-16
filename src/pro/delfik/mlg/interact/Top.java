@@ -1,4 +1,4 @@
-package pro.delfik.lmao.mlg.game.interact;
+package pro.delfik.mlg.interact;
 
 import lib.Texteria;
 import org.bukkit.Bukkit;

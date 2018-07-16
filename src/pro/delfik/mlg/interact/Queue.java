@@ -1,11 +1,11 @@
-package pro.delfik.lmao.mlg.game.interact;
+package pro.delfik.mlg.interact;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import pro.delfik.lmao.command.handle.PersonNotFoundException;
 import pro.delfik.lmao.core.Person;
-import pro.delfik.lmao.mlg.game.MLGRush;
-import pro.delfik.lmao.mlg.game.Sector;
+import pro.delfik.mlg.MLGRush;
+import pro.delfik.mlg.Sector;
 import pro.delfik.lmao.util.Cooldown;
 
 import java.util.Arrays;

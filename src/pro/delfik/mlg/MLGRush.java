@@ -1,4 +1,4 @@
-package pro.delfik.lmao.mlg.game;
+package pro.delfik.mlg;
 
 import lib.Generate;
 import org.bukkit.Bukkit;
@@ -17,15 +17,15 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import pro.delfik.lmao.core.Registrar;
-import pro.delfik.lmao.mlg.command.CommandCapitulate;
-import pro.delfik.lmao.mlg.command.CommandMLG;
-import pro.delfik.lmao.mlg.command.CommandSF;
-import pro.delfik.lmao.mlg.game.interact.Call;
-import pro.delfik.lmao.mlg.game.interact.Queue;
-import pro.delfik.lmao.mlg.game.interact.Render;
-import pro.delfik.lmao.mlg.game.interact.Top;
-import pro.delfik.lmao.mlg.game.side.BlueSide;
-import pro.delfik.lmao.mlg.game.side.RedSide;
+import pro.delfik.mlg.command.CommandCapitulate;
+import pro.delfik.mlg.command.CommandMLG;
+import pro.delfik.mlg.command.CommandSF;
+import pro.delfik.mlg.interact.Call;
+import pro.delfik.mlg.interact.Queue;
+import pro.delfik.mlg.interact.Render;
+import pro.delfik.mlg.interact.Top;
+import pro.delfik.mlg.side.BlueSide;
+import pro.delfik.mlg.side.RedSide;
 
 import java.io.File;
 import java.util.List;

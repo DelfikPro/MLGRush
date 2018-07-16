@@ -1,4 +1,4 @@
-package pro.delfik.lmao.mlg.game.side;
+package pro.delfik.mlg.side;
 
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -8,10 +8,10 @@ import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
 import pro.delfik.lmao.core.Person;
-import pro.delfik.lmao.mlg.game.MLGRush;
-import pro.delfik.lmao.mlg.game.Sector;
+import pro.delfik.mlg.MLGRush;
+import pro.delfik.mlg.Sector;
 
-import static pro.delfik.lmao.mlg.game.Sector.addDust;
+import static pro.delfik.mlg.Sector.addDust;
 
 public abstract class Side {
 	private Location loc;

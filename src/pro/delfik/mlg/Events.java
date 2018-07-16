@@ -1,7 +1,6 @@
-package pro.delfik.lmao.mlg.game;
+package pro.delfik.mlg;
 
 import lib.I;
-import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -22,17 +21,15 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.scoreboard.DisplaySlot;
 import pro.delfik.lmao.core.Person;
-import pro.delfik.lmao.core.connection.database.ServerIO;
-import pro.delfik.lmao.core.connection.handle.SocketEvent;
-import pro.delfik.lmao.mlg.game.interact.Queue;
-import pro.delfik.lmao.mlg.game.side.Side;
-import pro.delfik.lmao.util.U;
+import pro.delfik.lmao.core.connection.Connect;
+import pro.delfik.mlg.interact.Queue;
+import pro.delfik.mlg.side.Side;
+import pro.delfik.net.packet.PacketSummon;
 
 import java.util.HashMap;
 
 public class Events implements Listener {
-	
-	public static volatile int online = 0;
+
 	public static final HashMap<Player, Integer> hits = new HashMap<>();
 	
 	@EventHandler(ignoreCancelled = true)
@@ -56,11 +53,6 @@ public class Events implements Listener {
 	}
 	
 	@EventHandler
-	public void onSocket(SocketEvent e) {
-		if (e.getChannel().equals("askservers")) updateInLobby();
-	}
-	
-	@EventHandler
 	public void onItemDrop(PlayerDropItemEvent e) {
 		if (e.getPlayer().getGameMode() != GameMode.CREATIVE) e.setCancelled(true);
 	}
@@ -68,10 +60,6 @@ public class Events implements Listener {
 	@EventHandler
 	public void onInventoryClick(InventoryClickEvent e) {
 		if (e.getWhoClicked().getGameMode() != GameMode.CREATIVE) e.setCancelled(true);
-	}
-	
-	public static void updateInLobby() {
-		ServerIO.event("SSU", Bukkit.getMotd() + "/" + online + "/" + Bukkit.getMaxPlayers(), "LOBBY_1");
 	}
 	
 	@EventHandler
@@ -102,16 +90,12 @@ public class Events implements Listener {
 		MLGRush.equip(e.getPlayer());
 		e.getPlayer().setGameMode(GameMode.SURVIVAL);
 		//e.getPlayer().setMaximumNoDamageTicks(0);
-		online++;
-		updateInLobby();
 	}
 	
 	@EventHandler
 	public void onQuit(PlayerQuitEvent e) {
 		e.setQuitMessage("");
 		Sector s = Sector.byname.get(e.getPlayer().getName());
-		online--;
-		updateInLobby();
 		if (Queue.waiting != null) if (Queue.waiting.getName().equals(e.getPlayer().getName())) Queue.waiting = null;
 		if (s == null) return;
 		s.clearArea();
@@ -142,7 +126,7 @@ public class Events implements Listener {
 				return;
 			}
 			if (I.compare(e.getPlayer().getItemInHand(), MLGRush.HUB, false)) {
-				U.send(e.getPlayer().getName(), "LOBBY_1");
+				Connect.send(new PacketSummon(e.getPlayer().getName(), "LOBBY_1"));
 			}
 			return;
 		}
