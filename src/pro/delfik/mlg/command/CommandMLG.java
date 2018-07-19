@@ -20,7 +20,7 @@ public class CommandMLG extends LmaoCommand {
 
 	@Override
 	protected void run(CommandSender sender, String command, String[] args) {
-		if(args.length == 0)throw new NotEnoughArgumentsException("");//TODO
+		requireArgs(args, 1, "[Подкоманда]");
 		String prefix = "§8[§dMLG§8] §a";
 		try {
 			switch (args[0].toLowerCase()) {

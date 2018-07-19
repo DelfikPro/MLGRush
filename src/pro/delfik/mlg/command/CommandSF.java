@@ -17,7 +17,7 @@ public class CommandSF extends LmaoCommand {
 
 	@Override
 	protected void run(CommandSender sender, String command, String[] args) {
-		if(args.length == 0)throw new NotEnoughArgumentsException("");//TODO
+		requireArgs(args, 1, "[Игрок]");
 		Person invoker = Person.get(sender);
 		Person receiver = U.unary(sender, args[0]);
 
