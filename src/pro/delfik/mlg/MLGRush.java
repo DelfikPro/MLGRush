@@ -27,7 +27,6 @@ import pro.delfik.mlg.interact.Render;
 import pro.delfik.mlg.interact.Top;
 import pro.delfik.mlg.side.BlueSide;
 import pro.delfik.mlg.side.RedSide;
-import pro.delfik.net.packet.PacketTop;
 import pro.delfik.net.packet.PacketUpdateTop;
 
 import java.io.File;
@@ -68,6 +67,7 @@ public class MLGRush extends JavaPlugin {
 		r.regCommand(new CommandSF());
 		r.regCommand(new CommandCapitulate());
 		r.regEvent(new Events());
+		r.regEvent(new Top());
 		Render.class.getCanonicalName();
 		Call.class.getCanonicalName();
 		Top.class.getCanonicalName();

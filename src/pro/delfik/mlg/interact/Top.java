@@ -21,22 +21,18 @@ public class Top implements Listener{
 	public void event(PacketEvent event){
 		Packet packet = event.getPacket();
 		if(packet instanceof PacketTop){
-			PacketTop.Top top[] = ((PacketTop) packet).getTop();
-			//TODO
+			PacketTop.Top[] top = ((PacketTop) packet).getTop();
+			System.out.println(packet.toString());
+			update(top);
 		}
 	}
-	/*
-	public static void update(boolean b) {
+	
+	public static void update(PacketTop.Top[] array) {
 		World w = Bukkit.getWorlds().get(0);
-		String s = ServerIO.connect("gettop sf");
 		
-		if (b) Bukkit.broadcastMessage("§aТоп: §e" + s);
-		
-		String[] lines = s.split("\n");
-		//String[] top = new String[lines.length];
-		String[] names = new String[lines.length + 1];
-		String[] wins = new String[lines.length + 1];
-		String[] games = new String[lines.length + 1];
+		String[] names = new String[array.length + 1];
+		String[] wins = new String[array.length + 1];
+		String[] games = new String[array.length + 1];
 		
 		Location first = new Location(w, 11, 99, -2);
 		
@@ -45,20 +41,11 @@ public class Top implements Listener{
 		names[0] = "§d§lИмя";
 		wins[0] = "§d§lПобеды";
 		games[0] = "§d§lИгры";
-		for (int i = 1; i < lines.length + 1; i++) {
-			if (lines[i - 1].equals("null")) {
-				//top[i] = "§e" + (i + 1) + ". §f- EMPTY -";
-				names[i] = "- EMPTY -";
-				wins[i] = "-";
-				games[i] = "-";
-			} else {
-				String[] args = lines[i - 1].split("}");
-				names[i] = args[0];
-				wins[i] = "§a" + args[2];
-				games[i] = "§a" + args[1];
-				//top[i] = "§e" + (i + 1) + ". §f" + args[0] + "§b - " + args[2] + " побед §f| §b" + args[1] + " игр §f| §b" +
-				//		args[3] + " кроватей §f| §b" + args[4] + " смертей §f|";
-			}
+		for (int i = 1; i < array.length + 1; i++) {
+			PacketTop.Top top = array[i - 1];
+			names[i] = top.getNick();
+			wins[i] = "§a" + top.getWins();
+			games[i] = "§a" + top.getGames();
 		}
 		if (Top.names == null) Top.names = Texteria.create(first.clone().add(0, 0, 1), names);
 		else Top.names.setLines(names);
@@ -68,7 +55,4 @@ public class Top implements Listener{
 		else Top.wins.setLines(wins);
 	}
 	
-	
-	public static void update() {update(false);}
-	*/
 }
