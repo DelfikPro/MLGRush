@@ -25,11 +25,11 @@ public class CommandSF extends LmaoCommand {
 		if (invoker == null) throw new CustomException("§cЛибо вы не прогрузились как игрок, либо вы не игрок.");
 
 		// Проверка на получателя
-		if (receiver == null) throw new CustomException("§8[§dMLG§8] §6Игрок §e" + receiver + "§6 не найден.");
+		if (receiver == null) throw new CustomException("§8[§dMLG§8] §6Игрок §e" + args[0] + "§6 не найден.");
 
 		// Проверка на то, играет ли игрок
 		if (Sector.byname.get(receiver.getName()) != null)
-			throw new CustomException("§8[§dMLG§8] §6Игрок §e" + receiver + "§6 уже играет.");
+			throw new CustomException("§8[§dMLG§8] §6Игрок §e" + receiver.getName() + "§6 уже играет.");
 
 		//
 		if (Sector.byname.get(invoker.getName()) != null)
