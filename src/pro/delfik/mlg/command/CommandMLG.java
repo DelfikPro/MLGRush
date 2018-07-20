@@ -15,7 +15,7 @@ import pro.delfik.util.Rank;
 
 public class CommandMLG extends LmaoCommand {
 	public CommandMLG(){
-		super("mlgrush", Rank.DEV, "Управление MLGRush");
+		super("mlgrush", Rank.ADMIN, "Управление MLGRush");
 	}
 
 	@Override
