@@ -20,11 +20,8 @@ public class Top implements Listener{
 	@EventHandler
 	public void event(PacketEvent event){
 		Packet packet = event.getPacket();
-		if(packet instanceof PacketTop){
-			Bukkit.broadcastMessage("§d§ТОП ПРИШЁЛ!");
-			Bukkit.broadcastMessage("§a" + packet.toString());
+		if (packet instanceof PacketTop){
 			PacketTop.Top[] top = ((PacketTop) packet).getTop();
-			System.out.println(packet.toString());
 			update(top);
 		}
 	}
