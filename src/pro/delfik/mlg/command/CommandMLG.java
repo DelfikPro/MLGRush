@@ -10,6 +10,8 @@ import pro.delfik.mlg.Sector;
 import pro.delfik.mlg.interact.Render;
 import pro.delfik.mlg.interact.Top;
 import pro.delfik.lmao.util.U;
+import pro.delfik.mlg.side.RedSide;
+import pro.delfik.mlg.side.Side;
 import pro.delfik.net.packet.PacketUpdateTop;
 import pro.delfik.util.Rank;
 
@@ -27,6 +29,10 @@ public class CommandMLG extends LmaoCommand {
 				case "top":
 					Connect.send(new PacketUpdateTop("Nemo", false, 0, 100));
 					sender.sendMessage(prefix + "Топ обновлён.");
+					return;
+				case "top2":
+					Sector.updateStats(new RedSide(null, Person.get(sender)), true);
+					sender.sendMessage("§aOK");
 					return;
 				case "inv":
 					Person.get(sender).getHandle().openInventory(Render.generate());

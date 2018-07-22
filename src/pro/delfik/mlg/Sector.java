@@ -20,6 +20,7 @@ import pro.delfik.mlg.interact.Top;
 import pro.delfik.mlg.side.BlueSide;
 import pro.delfik.lmao.util.Cooldown;
 import pro.delfik.lmao.util.U;
+import pro.delfik.net.Packet;
 import pro.delfik.net.packet.PacketUpdateTop;
 
 import java.util.HashMap;
@@ -202,8 +203,10 @@ public class Sector {
 		}
 	}
 
-	private void updateStats(Side s, boolean winner) {
-		Connect.send(new PacketUpdateTop(s.getPlayer().getName(), winner, s.beds, s.deaths));
+	public static void updateStats(Side s, boolean winner) {
+		Packet p = new PacketUpdateTop(s.getPlayer().getName(), winner, s.beds, s.deaths);
+		Bukkit.broadcastMessage("§d§l" + p.toString());
+		Connect.send(p);
 	}
 	
 	private int get(String[] array, int element) {

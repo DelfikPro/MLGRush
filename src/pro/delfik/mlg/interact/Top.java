@@ -21,6 +21,8 @@ public class Top implements Listener{
 	public void event(PacketEvent event){
 		Packet packet = event.getPacket();
 		if(packet instanceof PacketTop){
+			Bukkit.broadcastMessage("§d§ТОП ПРИШЁЛ!");
+			Bukkit.broadcastMessage("§a" + packet.toString());
 			PacketTop.Top[] top = ((PacketTop) packet).getTop();
 			System.out.println(packet.toString());
 			update(top);
@@ -43,9 +45,10 @@ public class Top implements Listener{
 		games[0] = "§d§lИгры";
 		for (int i = 1; i < array.length + 1; i++) {
 			PacketTop.Top top = array[i - 1];
-			names[i] = top.getNick();
-			wins[i] = "§a" + top.getWins();
-			games[i] = "§a" + top.getGames();
+			boolean isNull = top == null;
+			names[i] = isNull ? "§7§o- Пусто -" : top.getNick();
+			wins[i] = isNull ? "§7-" : ("§a" + top.getWins());
+			games[i] = isNull ? "§7-" : ("§a" + top.getGames());
 		}
 		if (Top.names == null) Top.names = Texteria.create(first.clone().add(0, 0, 1), names);
 		else Top.names.setLines(names);
