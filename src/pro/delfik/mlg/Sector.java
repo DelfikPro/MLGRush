@@ -205,7 +205,6 @@ public class Sector {
 
 	public static void updateStats(Side s, boolean winner) {
 		Packet p = new PacketUpdateTop(s.getPlayer().getName(), winner, s.beds, s.deaths);
-		Bukkit.broadcastMessage("§d§l" + p.toString());
 		Connect.send(p);
 	}
 	
