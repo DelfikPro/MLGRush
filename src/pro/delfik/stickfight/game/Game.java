@@ -1,4 +1,4 @@
-package pro.delfik.lmao.stickfight.game;
+package pro.delfik.stickfight.game;
 
 public abstract class Game {
 	

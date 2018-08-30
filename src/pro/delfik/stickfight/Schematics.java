@@ -1,4 +1,4 @@
-package pro.delfik.lmao.stickfight;
+package pro.delfik.stickfight;
 
 import com.sk89q.worldedit.EditSession;
 import com.sk89q.worldedit.EmptyClipboardException;

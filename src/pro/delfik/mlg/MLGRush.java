@@ -1,6 +1,6 @@
 package pro.delfik.mlg;
 
-import lib.Generate;
+import implario.net.packet.PacketUpdateTop;
 import org.bukkit.Bukkit;
 import org.bukkit.Color;
 import org.bukkit.Location;
@@ -18,6 +18,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 import pro.delfik.lmao.core.Registrar;
 import pro.delfik.lmao.core.connection.Connect;
+import pro.delfik.lmao.outward.Generate;
 import pro.delfik.mlg.command.CommandCapitulate;
 import pro.delfik.mlg.command.CommandMLG;
 import pro.delfik.mlg.command.CommandSF;
@@ -27,7 +28,6 @@ import pro.delfik.mlg.interact.Render;
 import pro.delfik.mlg.interact.Top;
 import pro.delfik.mlg.side.BlueSide;
 import pro.delfik.mlg.side.RedSide;
-import pro.delfik.net.packet.PacketUpdateTop;
 
 import java.io.File;
 import java.util.List;

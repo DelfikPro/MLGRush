@@ -1,14 +1,14 @@
 package pro.delfik.mlg.interact;
 
-import lib.Texteria;
+import implario.net.Packet;
+import implario.net.packet.PacketTop;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import pro.delfik.lmao.core.connection.PacketEvent;
-import pro.delfik.net.Packet;
-import pro.delfik.net.packet.PacketTop;
+import pro.delfik.lmao.outward.Texteria;
 
 public class Top implements Listener{
 	

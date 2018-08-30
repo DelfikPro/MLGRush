@@ -1,5 +1,6 @@
 package pro.delfik.mlg.command;
 
+import implario.util.Rank;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import pro.delfik.lmao.command.handle.CustomException;
@@ -7,7 +8,6 @@ import pro.delfik.lmao.command.handle.LmaoCommand;
 import pro.delfik.lmao.core.Person;
 import pro.delfik.mlg.Sector;
 import pro.delfik.lmao.util.U;
-import pro.delfik.util.Rank;
 
 public class CommandCapitulate extends LmaoCommand {
 	public CommandCapitulate(){
