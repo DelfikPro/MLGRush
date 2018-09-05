@@ -7,8 +7,8 @@ import org.bukkit.World;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import pro.delfik.lmao.core.connection.PacketEvent;
-import pro.delfik.net.Packet;
-import pro.delfik.net.packet.PacketTop;
+import implario.net.Packet;
+import implario.net.packet.PacketTop;
 
 public class Top implements Listener{
 	

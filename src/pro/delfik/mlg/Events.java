@@ -24,7 +24,7 @@ import pro.delfik.lmao.core.Person;
 import pro.delfik.lmao.core.connection.Connect;
 import pro.delfik.mlg.interact.Queue;
 import pro.delfik.mlg.side.Side;
-import pro.delfik.net.packet.PacketSummon;
+import implario.net.packet.PacketSummon;
 
 import java.util.HashMap;
 

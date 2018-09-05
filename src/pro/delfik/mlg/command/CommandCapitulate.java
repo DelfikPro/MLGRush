@@ -7,7 +7,7 @@ import pro.delfik.lmao.command.handle.LmaoCommand;
 import pro.delfik.lmao.core.Person;
 import pro.delfik.mlg.Sector;
 import pro.delfik.lmao.util.U;
-import pro.delfik.util.Rank;
+import implario.util.Rank;
 
 public class CommandCapitulate extends LmaoCommand {
 	public CommandCapitulate(){

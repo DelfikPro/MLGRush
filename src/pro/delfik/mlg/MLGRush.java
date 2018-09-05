@@ -27,7 +27,7 @@ import pro.delfik.mlg.interact.Render;
 import pro.delfik.mlg.interact.Top;
 import pro.delfik.mlg.side.BlueSide;
 import pro.delfik.mlg.side.RedSide;
-import pro.delfik.net.packet.PacketUpdateTop;
+import implario.net.packet.PacketUpdateTop;
 
 import java.io.File;
 import java.util.List;
