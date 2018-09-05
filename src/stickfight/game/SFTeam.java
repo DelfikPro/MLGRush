@@ -1,4 +1,4 @@
-package pro.delfik.stickfight.game;
+package pro.delfik.lmao.stickfight.game;
 
 import org.bukkit.Location;
 import pro.delfik.lmao.core.Person;

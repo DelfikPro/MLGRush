@@ -1,8 +1,6 @@
 package pro.delfik.mlg;
 
-import implario.net.Packet;
-import implario.net.packet.PacketUpdateTop;
-import implario.util.Converter;
+import lib.Converter;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -18,9 +16,12 @@ import pro.delfik.lmao.core.Person;
 import pro.delfik.lmao.core.connection.Connect;
 import pro.delfik.mlg.side.RedSide;
 import pro.delfik.mlg.side.Side;
+import pro.delfik.mlg.interact.Top;
 import pro.delfik.mlg.side.BlueSide;
 import pro.delfik.lmao.util.Cooldown;
 import pro.delfik.lmao.util.U;
+import pro.delfik.net.Packet;
+import pro.delfik.net.packet.PacketUpdateTop;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -172,7 +173,7 @@ public class Sector {
 				p.getHandle().setScoreboard(Bukkit.getScoreboardManager().getMainScoreboard());
 				byname.remove(p.getName());
 				p.getHandle().getInventory().clear();
-				new Cooldown("endgame", 5, Converter.asList(p), () -> {
+				new Cooldown("endgame", 5, Converter.toList(p), () -> {
 					p.teleport(MLGRush.w.getSpawnLocation());
 					MLGRush.equip(p.getHandle());
 				});
@@ -195,7 +196,7 @@ public class Sector {
 			p.getHandle().setScoreboard(Bukkit.getScoreboardManager().getMainScoreboard());
 			byname.remove(p.getName());
 			p.getHandle().getInventory().clear();
-			new Cooldown("endgame", 5, Converter.asList(p), () -> {
+			new Cooldown("endgame", 5, Converter.toList(p), () -> {
 				p.teleport(MLGRush.w.getSpawnLocation());
 				MLGRush.equip(p.getHandle());
 			});
