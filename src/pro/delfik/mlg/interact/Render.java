@@ -1,10 +1,10 @@
 package pro.delfik.mlg.interact;
 
-import lib.Generate;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import pro.delfik.lmao.outward.Generate;
 import pro.delfik.mlg.Sector;
 
 public class Render {

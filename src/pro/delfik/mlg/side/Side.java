@@ -15,7 +15,7 @@ import static pro.delfik.mlg.Sector.addDust;
 
 public abstract class Side {
 	private Location loc;
-	private Location[] bed = new Location[2];
+	private Location[] bed;
 	private int points = 0;
 	private Person p;
 	public int beds = 0;

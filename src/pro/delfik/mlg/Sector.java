@@ -1,6 +1,8 @@
 package pro.delfik.mlg;
 
-import lib.Converter;
+import implario.net.Packet;
+import implario.net.packet.PacketUpdateTop;
+import implario.util.Converter;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -14,13 +16,11 @@ import org.bukkit.scoreboard.Scoreboard;
 import pro.delfik.lmao.command.handle.PersonNotFoundException;
 import pro.delfik.lmao.core.Person;
 import pro.delfik.lmao.core.connection.Connect;
-import pro.delfik.mlg.side.RedSide;
-import pro.delfik.mlg.side.Side;
-import pro.delfik.mlg.side.BlueSide;
 import pro.delfik.lmao.util.Cooldown;
 import pro.delfik.lmao.util.U;
-import implario.net.Packet;
-import implario.net.packet.PacketUpdateTop;
+import pro.delfik.mlg.side.BlueSide;
+import pro.delfik.mlg.side.RedSide;
+import pro.delfik.mlg.side.Side;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -172,7 +172,7 @@ public class Sector {
 				p.getHandle().setScoreboard(Bukkit.getScoreboardManager().getMainScoreboard());
 				byname.remove(p.getName());
 				p.getHandle().getInventory().clear();
-				new Cooldown("endgame", 5, Converter.toList(p), () -> {
+				new Cooldown("endgame", 5, Converter.asList(p), () -> {
 					p.teleport(MLGRush.w.getSpawnLocation());
 					MLGRush.equip(p.getHandle());
 				});
@@ -195,7 +195,7 @@ public class Sector {
 			p.getHandle().setScoreboard(Bukkit.getScoreboardManager().getMainScoreboard());
 			byname.remove(p.getName());
 			p.getHandle().getInventory().clear();
-			new Cooldown("endgame", 5, Converter.toList(p), () -> {
+			new Cooldown("endgame", 5, Converter.asList(p), () -> {
 				p.teleport(MLGRush.w.getSpawnLocation());
 				MLGRush.equip(p.getHandle());
 			});
