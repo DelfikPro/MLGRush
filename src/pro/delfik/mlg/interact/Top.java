@@ -36,13 +36,13 @@ public class Top implements Listener{
 		Location first = new Location(w, 11, 99, -2);
 		
 		if (numbers == null) numbers = Texteria.create(first.clone(),
-				new String[] {"§d§l#", "§7§o0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"});
+				new String[] {"§d§l#", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15"});
 		names[0] = "§d§lИмя";
 		names[1] = "§36oogle";
-		games[0] = "§d§lПобеды";
-		games[1] = "Infinity";
-		wins[0] = "§d§lИгры";
-		wins[1] = "0";
+		games[0] = "§d§lИгры";
+		wins[1] = "§a\u221e";
+		wins[0] = "§d§lПобеды";
+		games[1] = "§a0";
 		for (int i = 2; i < array.length + 2; i++) {
 			PacketTop.Top top = array[i - 2];
 			boolean isNull = top == null;
@@ -52,9 +52,9 @@ public class Top implements Listener{
 		}
 		if (Top.names == null) Top.names = Texteria.create(first.clone().add(0, 0, 1), names);
 		else Top.names.setLines(names);
-		if (Top.wins == null) Top.wins = Texteria.create(first.clone().add(0, 0, 2), games);
+		if (Top.wins == null) Top.wins = Texteria.create(first.clone().add(0, 0, 3), games);
 		else Top.wins.setLines(games);
-		if (Top.games == null) Top.games = Texteria.create(first.clone().add(0, 0, 3), wins);
+		if (Top.games == null) Top.games = Texteria.create(first.clone().add(0, 0, 2), wins);
 		else Top.games.setLines(wins);
 	}
 	
