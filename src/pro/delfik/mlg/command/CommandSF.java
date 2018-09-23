@@ -3,7 +3,7 @@ package pro.delfik.mlg.command;
 import org.bukkit.command.CommandSender;
 import pro.delfik.lmao.command.handle.CustomException;
 import pro.delfik.lmao.command.handle.LmaoCommand;
-import pro.delfik.lmao.core.Person;
+import pro.delfik.lmao.user.Person;
 import pro.delfik.mlg.Sector;
 import pro.delfik.mlg.interact.Call;
 import pro.delfik.lmao.util.U;

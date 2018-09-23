@@ -7,7 +7,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import pro.delfik.lmao.core.connection.PacketEvent;
+import pro.delfik.lmao.ev.added.PacketEvent;
 import pro.delfik.lmao.outward.Texteria;
 
 public class Top implements Listener{

@@ -4,7 +4,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import pro.delfik.lmao.command.handle.CustomException;
 import pro.delfik.lmao.command.handle.LmaoCommand;
-import pro.delfik.lmao.core.Person;
+import pro.delfik.lmao.user.Person;
 import pro.delfik.mlg.Sector;
 import pro.delfik.lmao.util.U;
 import implario.util.Rank;

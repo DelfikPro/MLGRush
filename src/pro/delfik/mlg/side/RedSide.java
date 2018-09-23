@@ -1,7 +1,7 @@
 package pro.delfik.mlg.side;
 
 import org.bukkit.Location;
-import pro.delfik.lmao.core.Person;
+import pro.delfik.lmao.user.Person;
 import pro.delfik.mlg.Sector;
 
 public class RedSide extends Side {

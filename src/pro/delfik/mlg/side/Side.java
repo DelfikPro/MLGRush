@@ -7,7 +7,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
-import pro.delfik.lmao.core.Person;
+import pro.delfik.lmao.user.Person;
 import pro.delfik.mlg.MLGRush;
 import pro.delfik.mlg.Sector;
 
