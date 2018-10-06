@@ -120,8 +120,8 @@ public class MLGRush extends JavaPlugin {
 	}
 	
 	public static Location sectorize(Location loc, int id) {
-		int betweenSameMaps = 46;
-		int betweenVariousMaps = 48;
+		int betweenSameMaps = 200;
+		int betweenVariousMaps = 200;
 		Location l = loc.clone();
 		l.setZ(l.getZ() + (betweenSameMaps * (id % Sector.SECTORS_IN_ROW)));
 		l.setX(l.getX() + (betweenVariousMaps * (id / Sector.SECTORS_IN_ROW)));

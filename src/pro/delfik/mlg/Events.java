@@ -1,8 +1,12 @@
 package pro.delfik.mlg;
 
 import implario.net.packet.PacketSummon;
+import net.minecraft.server.v1_8_R1.BlockPosition;
+import net.minecraft.server.v1_8_R1.WorldServer;
 import org.bukkit.GameMode;
+import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.craftbukkit.v1_8_R1.CraftWorld;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -13,16 +17,11 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
-import org.bukkit.event.player.PlayerDropItemEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
+import org.bukkit.event.player.*;
 import org.bukkit.scoreboard.DisplaySlot;
-import pro.delfik.lmao.user.Person;
 import pro.delfik.lmao.Connect;
 import pro.delfik.lmao.outward.item.I;
+import pro.delfik.lmao.user.Person;
 import pro.delfik.mlg.interact.Queue;
 import pro.delfik.mlg.side.Side;
 
@@ -131,7 +130,11 @@ public class Events implements Listener {
 			return;
 		}
 		if (e.getAction() != Action.LEFT_CLICK_BLOCK) return;
-		if (e.getClickedBlock().getType() == Material.SANDSTONE) e.getClickedBlock().setType(Material.AIR);
+		if (e.getClickedBlock().getType() == Material.SANDSTONE) {
+			WorldServer nmsWorld = ((CraftWorld) e.getPlayer().getWorld()).getHandle();
+			Location block = e.getClickedBlock().getLocation();
+			nmsWorld.setAir(new BlockPosition(block.getBlockX(), block.getBlockY(), block.getBlockZ()), true);
+		}
 	}
 	
 	@EventHandler
