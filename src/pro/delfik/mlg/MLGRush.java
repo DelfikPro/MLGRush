@@ -1,11 +1,6 @@
 package pro.delfik.mlg;
 
-import implario.net.packet.PacketUpdateTop;
-import org.bukkit.Bukkit;
-import org.bukkit.Color;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.World;
+import org.bukkit.*;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Entity;
@@ -16,9 +11,8 @@ import org.bukkit.event.world.WorldInitEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
-import pro.delfik.lmao.util.Registrar;
-import pro.delfik.lmao.Connect;
 import pro.delfik.lmao.outward.Generate;
+import pro.delfik.lmao.util.Registrar;
 import pro.delfik.mlg.command.CommandCapitulate;
 import pro.delfik.mlg.command.CommandMLG;
 import pro.delfik.mlg.command.CommandSF;
@@ -78,11 +72,8 @@ public class MLGRush extends JavaPlugin {
 			spawn = w.getSpawnLocation().add(0.5, 0.5, 0.5);
 			spawn.setYaw(-90);
 		} catch (IndexOutOfBoundsException ignored) {}
-		if (w != null) {
-			initDefaults();
-		}
-		Connect.send(new PacketUpdateTop("Nemo", false, 0, 100));
-		fallY = 29;
+		if (w != null) initDefaults();
+		fallY = 100;
 	}
 	
 	@EventHandler

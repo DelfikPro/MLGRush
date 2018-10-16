@@ -30,7 +30,7 @@ import java.util.Random;
 public class Sector {
 	
 	public static final int SECTORS_IN_ROW = 6;
-	public static final int MAPS = 9;
+	public static final int MAPS = 3;
 	
 	// blue 0 | red 1
 	public static Sector[] ingame = new Sector[MAPS * SECTORS_IN_ROW];
