@@ -46,10 +46,6 @@ public class MLGRush extends JavaPlugin {
 		p.getInventory().setItem(0, queue);
 		p.getInventory().setItem(1, GARPOON);
 		p.getInventory().setItem(8, HUB);
-		try {
-			ItemStack item = com.yapzhenyie.GadgetsMenu.GadgetsMenu.getGadgetsMenuData().getMenuSelector();
-			p.getInventory().setItem(7, item);
-		} catch (NoClassDefFoundError ignored) {}
 		p.updateInventory();
 	}
 	
