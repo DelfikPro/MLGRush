@@ -164,4 +164,10 @@ public class Events implements Listener {
 			if (!Sector.byname.containsKey(name)) e.setCancelled(true);
 		}
 	}
+
+	@EventHandler
+	public void event(PlayerBedEnterEvent event){
+		event.setCancelled(true);
+		event.getPlayer().sendMessage("§cПрости, тебе нельзя спать");
+	}
 }
