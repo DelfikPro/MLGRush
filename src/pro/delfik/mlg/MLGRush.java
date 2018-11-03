@@ -39,7 +39,8 @@ public class MLGRush extends JavaPlugin {
 	public static MLGRush plugin;
 	public static final ItemStack queue = Generate.enchant(Generate.charge(Color.LIME, "§6>> §aВойти в очередь §6<<"), Enchantment.LUCK, 1);
 	public static final ItemStack leavequeue = Generate.enchant(Generate.charge(Color.RED, "§6>> §cВыйти из очереди §6<<"), Enchantment.LUCK, 1);
-	
+	private static int maps;
+
 	public static void equip(Player p) {
 		Inventory i = p.getInventory();
 		p.getInventory().clear();
@@ -48,7 +49,11 @@ public class MLGRush extends JavaPlugin {
 		p.getInventory().setItem(8, HUB);
 		p.updateInventory();
 	}
-	
+
+	public static int getMaps() {
+		return maps;
+	}
+
 	@Override
 	public void onEnable() {
 		plugin = this;
@@ -96,6 +101,7 @@ public class MLGRush extends JavaPlugin {
 			RedSide.defaultLoc = parse(yml.getString("map.red-spawn"), w);
 			BlueSide.defaultBed = parse(yml.getStringList("map.blue-bed"), w);
 			RedSide.defaultBed = parse(yml.getStringList("map.red-bed"), w);
+			Sector.MAPS = yml.getInt("map.cl");
 		} catch (Exception e) {
 			Bukkit.broadcastMessage("§cУ тебя кривые конфиги. Исправляй.");
 			Bukkit.getPluginManager().disablePlugin(MLGRush.plugin);

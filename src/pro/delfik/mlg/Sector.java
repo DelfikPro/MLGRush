@@ -7,21 +7,23 @@ import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Score;
 import org.bukkit.scoreboard.Scoreboard;
+import pro.delfik.lmao.Connect;
 import pro.delfik.lmao.command.handle.PersonNotFoundException;
 import pro.delfik.lmao.user.Person;
-import pro.delfik.lmao.Connect;
 import pro.delfik.lmao.util.Cooldown;
 import pro.delfik.lmao.util.U;
 import pro.delfik.mlg.side.BlueSide;
 import pro.delfik.mlg.side.RedSide;
 import pro.delfik.mlg.side.Side;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -30,7 +32,7 @@ import java.util.Random;
 public class Sector {
 	
 	public static final int SECTORS_IN_ROW = 6;
-	public static final int MAPS = 3;
+	public static volatile int MAPS = YamlConfiguration.loadConfiguration(new File("settings.yml")).getInt("map.cl");
 	
 	// blue 0 | red 1
 	public static Sector[] ingame = new Sector[MAPS * SECTORS_IN_ROW];

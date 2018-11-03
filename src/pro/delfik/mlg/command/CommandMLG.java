@@ -1,16 +1,20 @@
 package pro.delfik.mlg.command;
 
-import pro.delfik.lmao.command.handle.CustomException;
-import pro.delfik.lmao.command.handle.LmaoCommand;
-import org.bukkit.command.CommandSender;
-import pro.delfik.lmao.user.Person;
-import pro.delfik.lmao.Connect;
-import pro.delfik.mlg.Sector;
-import pro.delfik.mlg.interact.Render;
-import pro.delfik.lmao.util.U;
-import pro.delfik.mlg.side.RedSide;
 import implario.net.packet.PacketUpdateTop;
 import implario.util.Rank;
+import org.bukkit.Location;
+import org.bukkit.Material;
+import org.bukkit.command.CommandSender;
+import pro.delfik.lmao.Connect;
+import pro.delfik.lmao.command.handle.CustomException;
+import pro.delfik.lmao.command.handle.LmaoCommand;
+import pro.delfik.lmao.user.Person;
+import pro.delfik.lmao.util.U;
+import pro.delfik.mlg.MLGRush;
+import pro.delfik.mlg.Sector;
+import pro.delfik.mlg.interact.Render;
+import pro.delfik.mlg.side.BlueSide;
+import pro.delfik.mlg.side.RedSide;
 
 public class CommandMLG extends LmaoCommand {
 	public CommandMLG(){
@@ -49,6 +53,16 @@ public class CommandMLG extends LmaoCommand {
 					sender.sendMessage(prefix + "§cИспользование: §e/mlg sector [Номер сектора] [Игрок]");
 					return;
 				}
+			}
+			case "setup": {
+				requireArgs(args, 2, "setup [Номер сектора]");
+				int id = requireInt(args[1]);
+				MLGRush.sectorize(RedSide.defaultLoc, id).getBlock().setType(Material.REDSTONE_BLOCK);
+				MLGRush.sectorize(BlueSide.defaultLoc, id).getBlock().setType(Material.LAPIS_BLOCK);
+				for (Location loc : MLGRush.sectorize(RedSide.defaultBed, id)) loc.getBlock().setType(Material.GOLD_BLOCK);
+				for (Location loc : MLGRush.sectorize(BlueSide.defaultBed, id)) loc.getBlock().setType(Material.GOLD_BLOCK);
+				sender.sendMessage("§aОтметки для сектора §e" + id + " §aустановлены.");
+				return;
 			}
 			case "win": {
 				Sector sec = Sector.byname.get(sender.getName());
