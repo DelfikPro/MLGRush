@@ -31,7 +31,7 @@ public class CommandMLG extends LmaoCommand {
 				sender.sendMessage(prefix + "Топ обновлён.");
 				return;
 			case "top2":
-				Sector.updateStats(new RedSide(null, Person.get(sender)), true);
+				Sector.updateStats(null, true, sender.getName());
 				sender.sendMessage("§aOK");
 				return;
 			case "inv":

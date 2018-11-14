@@ -1,7 +1,9 @@
 package pro.delfik.mlg;
 
 import implario.net.Packet;
+import implario.net.packet.PacketTopUpdate;
 import implario.net.packet.PacketUpdateTop;
+import implario.util.ByteZip;
 import implario.util.Converter;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -204,9 +206,16 @@ public class Sector {
 		}
 	}
 
+	public static void updateStats(Side s, boolean winner, String name) {
+		Connect.send(new PacketTopUpdate("SF",
+				new ByteZip().add(1).add(winner ? 1 : 0)
+						.add(s == null ? 0 : s.beds)
+						.add(s == null ? 0 : s.deaths).build(),
+				name));
+	}
+
 	public static void updateStats(Side s, boolean winner) {
-		Packet p = new PacketUpdateTop(s.getPlayer().getName(), winner, s.beds, s.deaths);
-		Connect.send(p);
+		updateStats(s, winner, s.getPlayer().getName());
 	}
 	
 	private int get(String[] array, int element) {
