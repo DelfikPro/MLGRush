@@ -1,6 +1,7 @@
 package pro.delfik.mlg.interact;
 
 import implario.net.Packet;
+import implario.net.packet.PacketCreateTop;
 import implario.net.packet.PacketTop;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -20,13 +21,13 @@ public class Top implements Listener{
 	@EventHandler
 	public void event(PacketEvent event){
 		Packet packet = event.getPacket();
-		if (packet instanceof PacketTop){
-			PacketTop.Top[] top = ((PacketTop) packet).getTop();
-			update(top);
+		System.out.println(packet);
+		if (packet instanceof PacketCreateTop){
+			update(((PacketCreateTop)packet).getTop());
 		}
 	}
 	
-	public static void update(PacketTop.Top[] array) {
+	public static void update(String[] array) {
 		World w = Bukkit.getWorlds().get(0);
 		
 		String[] names = new String[array.length + 2];
@@ -44,11 +45,11 @@ public class Top implements Listener{
 		wins[0] = "§d§lПобеды";
 		games[1] = "§a0";
 		for (int i = 2; i < array.length + 2; i++) {
-			PacketTop.Top top = array[i - 2];
-			boolean isNull = top == null;
-			names[i] = isNull ? "§7§o- Пусто -" : top.getNick();
-			wins[i] = isNull ? "§7-" : ("§a" + top.getWins());
-			games[i] = isNull ? "§7-" : ("§a" + top.getGames());
+			String split[] = array[i - 2].split(" ");
+			boolean isNull = split[0].equals("null");
+			names[i] = isNull ? "§7§o- Пусто -" : split[0];
+			wins[i] = isNull ? "§7-" : ("§a" + split[1]);
+			games[i] = isNull ? "§7-" : ("§a" + split[2]);
 		}
 		if (Top.names == null) Top.names = Texteria.create(first.clone().add(0, 0, 1), names);
 		else Top.names.setLines(names);

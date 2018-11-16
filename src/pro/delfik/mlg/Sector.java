@@ -5,6 +5,7 @@ import implario.net.packet.PacketTopUpdate;
 import implario.net.packet.PacketUpdateTop;
 import implario.util.ByteZip;
 import implario.util.Converter;
+import implario.util.ServerType;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -207,7 +208,7 @@ public class Sector {
 	}
 
 	public static void updateStats(Side s, boolean winner, String name) {
-		Connect.send(new PacketTopUpdate("SF",
+		Connect.send(new PacketTopUpdate(ServerType.SF,
 				new ByteZip().add(1).add(winner ? 1 : 0)
 						.add(s == null ? 0 : s.beds)
 						.add(s == null ? 0 : s.deaths).build(),
