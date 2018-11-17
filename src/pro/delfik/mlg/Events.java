@@ -1,5 +1,7 @@
 package pro.delfik.mlg;
 
+import implario.net.Packet;
+import implario.net.packet.PacketCreateTop;
 import implario.net.packet.PacketSummon;
 import net.minecraft.server.v1_8_R1.BlockPosition;
 import net.minecraft.server.v1_8_R1.WorldServer;
@@ -20,9 +22,11 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.*;
 import org.bukkit.scoreboard.DisplaySlot;
 import pro.delfik.lmao.Connect;
+import pro.delfik.lmao.ev.added.PacketEvent;
 import pro.delfik.lmao.outward.item.I;
 import pro.delfik.lmao.user.Person;
 import pro.delfik.mlg.interact.Queue;
+import pro.delfik.mlg.interact.Top;
 import pro.delfik.mlg.side.Side;
 
 import java.util.HashMap;
@@ -89,6 +93,14 @@ public class Events implements Listener {
 		MLGRush.equip(e.getPlayer());
 		e.getPlayer().setGameMode(GameMode.SURVIVAL);
 		//e.getPlayer().setMaximumNoDamageTicks(0);
+	}
+
+	@EventHandler
+	public void event(PacketEvent event){
+		Packet packet = event.getPacket();
+		if (packet instanceof PacketCreateTop){
+			Top.update(((PacketCreateTop)packet).getTop());
+		}
 	}
 	
 	@EventHandler

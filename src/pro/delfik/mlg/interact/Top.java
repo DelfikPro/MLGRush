@@ -11,21 +11,12 @@ import org.bukkit.event.Listener;
 import pro.delfik.lmao.ev.added.PacketEvent;
 import pro.delfik.lmao.outward.Texteria;
 
-public class Top implements Listener{
+public class Top {
 	
 	public static Texteria.Text numbers = null;
 	public static Texteria.Text names = null;
 	public static Texteria.Text games = null;
 	public static Texteria.Text wins = null;
-
-	@EventHandler
-	public void event(PacketEvent event){
-		Packet packet = event.getPacket();
-		System.out.println(packet);
-		if (packet instanceof PacketCreateTop){
-			update(((PacketCreateTop)packet).getTop());
-		}
-	}
 	
 	public static void update(String[] array) {
 		World w = Bukkit.getWorlds().get(0);

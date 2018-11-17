@@ -62,7 +62,6 @@ public class MLGRush extends JavaPlugin {
 		r.regCommand(new CommandSF());
 		r.regCommand(new CommandCapitulate());
 		r.regEvent(new Events());
-		r.regEvent(new Top());
 		Render.class.getCanonicalName();
 		Call.class.getCanonicalName();
 		Top.class.getCanonicalName();
