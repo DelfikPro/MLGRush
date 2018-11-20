@@ -1,11 +1,9 @@
 package pro.delfik.mlg.command;
 
-import implario.net.packet.PacketUpdateTop;
 import implario.util.Rank;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
-import pro.delfik.lmao.Connect;
 import pro.delfik.lmao.command.handle.CustomException;
 import pro.delfik.lmao.command.handle.LmaoCommand;
 import pro.delfik.lmao.user.Person;
@@ -26,10 +24,6 @@ public class CommandMLG extends LmaoCommand {
 		requireArgs(args, 1, "[Подкоманда]");
 		String prefix = "§8[§dMLG§8] §a";
 		switch (args[0].toLowerCase()) {
-			case "top":
-				Connect.send(new PacketUpdateTop("Nemo", false, 0, 100));
-				sender.sendMessage(prefix + "Топ обновлён.");
-				return;
 			case "top2":
 				Sector.updateStats(null, true, sender.getName());
 				sender.sendMessage("§aOK");

@@ -1,8 +1,6 @@
 package pro.delfik.mlg;
 
-import implario.net.Packet;
 import implario.net.packet.PacketTopUpdate;
-import implario.net.packet.PacketUpdateTop;
 import implario.util.ByteZip;
 import implario.util.Converter;
 import implario.util.ServerType;
@@ -68,7 +66,8 @@ public class Sector {
 				}
 				byname.remove(a.getPlayer().getName());
 				throw new PersonNotFoundException(s.getPlayer().getName());
-			} else byname.put(s.getPlayer().getName(), this);
+			}
+			byname.put(s.getPlayer().getName(), this);
 		}
 		sb = Bukkit.getScoreboardManager().getNewScoreboard();
 		Objective o = sb.registerNewObjective("dummy", "dummy");
