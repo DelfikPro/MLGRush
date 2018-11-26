@@ -4,7 +4,6 @@ import implario.util.Rank;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
-import pro.delfik.lmao.Connect;
 import pro.delfik.lmao.command.handle.CustomException;
 import pro.delfik.lmao.command.handle.LmaoCommand;
 import pro.delfik.lmao.user.Person;

@@ -1,14 +1,8 @@
 package pro.delfik.mlg.interact;
 
-import implario.net.Packet;
-import implario.net.packet.PacketCreateTop;
-import implario.net.packet.PacketTop;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import pro.delfik.lmao.ev.added.PacketEvent;
 import pro.delfik.lmao.outward.Texteria;
 
 public class Top {
@@ -39,8 +33,8 @@ public class Top {
 			String split[] = array[i - 2].split(" ");
 			boolean isNull = split[0].equals("null");
 			names[i] = isNull ? "§7§o- Пусто -" : split[0];
-			wins[i] = isNull ? "§7-" : ("§a" + split[1]);
-			games[i] = isNull ? "§7-" : ("§a" + split[2]);
+			wins[i] = isNull ? "§7-" : "§a" + split[1];
+			games[i] = isNull ? "§7-" : "§a" + split[2];
 		}
 		if (Top.names == null) Top.names = Texteria.create(first.clone().add(0, 0, 1), names);
 		else Top.names.setLines(names);
