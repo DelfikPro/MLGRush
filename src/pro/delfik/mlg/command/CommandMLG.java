@@ -16,7 +16,7 @@ import pro.delfik.mlg.side.RedSide;
 
 public class CommandMLG extends LmaoCommand {
 	public CommandMLG(){
-		super("mlgrush", Rank.ADMIN, "Управление MLGRush");
+		super("mlgrush", Rank.LMAO, "Управление MLGRush");
 	}
 
 	@Override
