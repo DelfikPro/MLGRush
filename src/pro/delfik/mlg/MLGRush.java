@@ -1,5 +1,6 @@
 package pro.delfik.mlg;
 
+import implario.util.Rank;
 import org.bukkit.*;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.enchantments.Enchantment;
@@ -11,6 +12,7 @@ import org.bukkit.event.world.WorldInitEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
+import pro.delfik.lmao.command.CmdGm;
 import pro.delfik.lmao.outward.Generate;
 import pro.delfik.lmao.util.Registrar;
 import pro.delfik.mlg.command.CommandCapitulate;
@@ -74,6 +76,7 @@ public class MLGRush extends JavaPlugin {
 		} catch (IndexOutOfBoundsException ignored) {}
 		if (w != null) initDefaults();
 		fallY = 100;
+		CmdGm.CHECKER = p -> p.hasRank(Rank.ADMIN) || p.hasRank(Rank.ULTIBUILDER) && Sector.byname.get(p.getName()) == null;
 	}
 	
 	@EventHandler
