@@ -1,5 +1,6 @@
 package pro.delfik.mlg.command;
 
+import com.mojang.authlib.yggdrasil.response.User;
 import implario.util.Rank;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -23,6 +24,7 @@ public class CommandMLG extends LmaoCommand {
 	protected void run(CommandSender sender, String command, String[] args) {
 		requireArgs(args, 1, "[Подкоманда]");
 		String prefix = "§8[§dMLG§8] §a";
+		Person person = Person.get(sender);
 		switch (args[0].toLowerCase()) {
 			case "top2":
 				Sector.updateStats(null, true, sender.getName());
